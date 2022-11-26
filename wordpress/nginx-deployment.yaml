@@ -3,16 +3,15 @@ kind: Deployment
 metadata:
   name: mysql-nginx
   labels:
-    project: wordpress
+    app: mysql-nginx
 spec:
   replicas: 1
   selector:
     matchLabels: 
-      app: nginx
+      app: mysql-nginx
   template:
     metadata:
       labels:
-        project: wordpress
         app: nginx
     spec:
       containers:
