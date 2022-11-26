@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql-php-nginx
+  name: mysql-nginx
   labels:
     project: wordpress
 spec:
   replicas: 1
   selector:
     matchLabels: 
-      project: wordpress
+      app: nginx
   template:
     metadata:
       labels:
