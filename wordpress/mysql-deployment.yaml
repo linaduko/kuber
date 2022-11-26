@@ -19,4 +19,4 @@ spec:
       - name: nginx
         image: nginx:alpine
         ports:
-        - containerPort: 8080
+        - containerPort: 80
