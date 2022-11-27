@@ -5,7 +5,6 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replicas: 1
   selector:
     matchLabels: 
       app: wordpress
@@ -18,4 +17,4 @@ spec:
       - name: nginx
         image: nginx:alpine
         ports:
-        - containerPort: 80
+        - containerPort: 8080
