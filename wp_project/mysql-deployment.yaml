@@ -32,7 +32,7 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: wordpress
@@ -45,7 +45,6 @@ spec:
         app: wordpress
         tier: mysql
     spec:
-      replicas: 2
       containers:
       - image: mysql:5.6
         name: mysql
