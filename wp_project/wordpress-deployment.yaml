@@ -66,3 +66,25 @@ spec:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: wp-pv-claim
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: autoscaling
+spec: 
+  scaleTargetRef: 
+    apiVersion: apps/v2beta1
+    kind: Deployment
+    name: wordpress
+  minReplicas: 2
+  maxReplicas: 4
+  metrics:
+   - type: Resource
+   resource:
+     name: cpu
+     targetAverageUtilization: 70
+   - type: Resource
+   resource:
+     name: memory
+     targetAverageUtilization: 80
+
