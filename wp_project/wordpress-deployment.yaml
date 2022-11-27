@@ -6,7 +6,7 @@ metadata:
     app: wordpress
 spec:
   ports:
-    - port: 80
+    - port: 8080
   selector:
     app: wordpress
     tier: frontend
@@ -32,6 +32,7 @@ metadata:
   labels:
     app: wordpress
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: wordpress
@@ -44,9 +45,8 @@ spec:
         app: wordpress
         tier: frontend
     spec:
-      replicas: 2
       containers:
-      - image: wordpress:5.1.1-fpm-alpine
+      - image: wordpress:4.8-apache
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
@@ -57,8 +57,8 @@ spec:
               name: mysql-pass
               key: password
         ports:
-        - containerPort: 80
-        name: wordpress
+        - containerPort: 5
+          name: wordpress
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: /var/www/html

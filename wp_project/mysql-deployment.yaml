@@ -32,7 +32,7 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replica: 2
+  replicas: 2
   selector:
     matchLabels:
       app: wordpress
@@ -46,7 +46,7 @@ spec:
         tier: mysql
     spec:
       containers:
-      - image: mysql:5.6
+      - image: mysql
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
