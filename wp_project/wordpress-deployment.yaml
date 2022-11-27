@@ -9,7 +9,6 @@ spec:
     - port: 80
       protocol: TCP
       targetPort: 9376
-  clusterIP: 192.168.1.12
   selector:
     app: wordpress
     tier: frontend
