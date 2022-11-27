@@ -70,7 +70,7 @@ spec:
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: autoscaling
+  name: wordpress-deployment
 spec: 
   scaleTargetRef: 
     apiVersion: apps/v2beta1
