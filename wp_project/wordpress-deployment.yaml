@@ -6,7 +6,7 @@ metadata:
     app: wordpress
 spec:
   ports:
-    - port: 8080
+    - port: 80
   selector:
     app: wordpress
     tier: frontend
@@ -32,7 +32,7 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: wordpress
@@ -57,7 +57,7 @@ spec:
               name: mysql-pass
               key: password
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           name: wordpress
         volumeMounts:
         - name: wordpress-persistent-storage
