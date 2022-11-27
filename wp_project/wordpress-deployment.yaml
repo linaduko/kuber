@@ -57,7 +57,7 @@ spec:
               name: mysql-pass
               key: password
         ports:
-        - containerPort: 5
+        - containerPort: 80
           name: wordpress
         volumeMounts:
         - name: wordpress-persistent-storage
@@ -67,28 +67,28 @@ spec:
         persistentVolumeClaim:
           claimName: wp-pv-claim
 ---
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: wordpress
-spec: 
-  scaleTargetRef: 
-    apiVersion: apps/v2
-    kind: Deployment
-    name: wordpress
-  minReplicas: 2
-  maxReplicas: 4
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80
+#apiVersion: autoscaling/v2
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: wordpress
+#spec: 
+#  scaleTargetRef: 
+#    apiVersion: apps/v2
+#    kind: Deployment
+#    name: wordpress
+#  minReplicas: 2
+#  maxReplicas: 4
+#  metrics:
+#  - type: Resource
+#    resource:
+#      name: cpu
+#      target:
+#        type: Utilization
+#        averageUtilization: 70
+#  - type: Resource
+#    resource:
+#      name: memory
+#      target:
+#        type: Utilization
+#        averageUtilization: 80
 
