@@ -14,7 +14,10 @@ pipeline {
         stage('Test'){
             steps {
                 sh 'echo TESTING...'
-                sh 'apt install -y npm'
+                sh 'mvn clean package -DskipTests=true'
+                sh 'mvn surefire:test'
+                sh 'mvn failsafe:integration-test'
+                junit 'target/surefire-reports/TEST-*.xml'
                 sh 'echo TEST 200OK'
             }
         }
