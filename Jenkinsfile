@@ -2,6 +2,8 @@ pipeline {
     agent {
         node 'kuber-ssh'
     }
+    tools { maven 'Maven'
+    }
     stages {
         stage('Build'){
             steps {
