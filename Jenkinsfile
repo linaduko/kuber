@@ -17,7 +17,6 @@ pipeline {
             steps {
                 sh 'echo TESTING...'
                 sh 'apt install -y npm'
-                sh "mvn install"
                 sh 'echo TEST 200OK'
             }
         }
