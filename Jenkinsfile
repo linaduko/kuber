@@ -2,6 +2,9 @@ pipeline {
     agent {
         node 'kuber-ssh'
     }
+    tools {
+        maven 'Maven'
+    }
     stages {
         stage('Build'){
             steps {
@@ -14,6 +17,7 @@ pipeline {
             steps {
                 sh 'echo TESTING...'
                 sh 'apt install npm'
+                sh "mvn install"
                 sh 'echo TEST 200OK'
             }
         }
