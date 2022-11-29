@@ -6,13 +6,13 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'echo BUILDING...'
-                sh 'ls -la' 
                 sh 'echo BUILD 200OK'
             }
         }
         stage('Test'){
             steps {
                 sh 'echo TESTING...'
+
                 sh 'echo TEST 200OK'
             }
         }
