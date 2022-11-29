@@ -1,0 +1,7 @@
+    <project>
+      <modelVersion>1.0.0</modelVersion>
+     
+      <groupId>com.kuber.app</groupId>
+      <artifactId>wordpress</artifactId>
+      <version>1</version>
+    </project>
