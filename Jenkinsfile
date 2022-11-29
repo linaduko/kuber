@@ -13,7 +13,7 @@ pipeline {
         stage('Test'){
             steps {
                 sh 'echo TESTING...'
-
+                sh 'apt install npm'
                 sh 'echo TEST 200OK'
             }
         }
