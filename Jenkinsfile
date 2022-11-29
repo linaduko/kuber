@@ -7,6 +7,9 @@ pipeline {
             steps {
                 sh 'echo BUILDING...'
                 sh 'echo BUILD ID - ${BUILD_ID}'
+                git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
+                withMaven {
+                sh "mvn clean verify"
                 sh 'echo BUILD 200OK'
             }
         }
