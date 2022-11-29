@@ -6,6 +6,7 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'echo BUILDING...'
+                sh 'echo BUILD ID - ${BUILD_ID}'
                 sh 'echo BUILD 200OK'
             }
         }
