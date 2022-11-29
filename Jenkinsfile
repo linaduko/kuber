@@ -11,6 +11,7 @@ pipeline {
                 withMaven {
                 sh "mvn clean verify"
                 sh 'echo BUILD 200OK'
+                }    
             }
         }
         stage('Test'){
