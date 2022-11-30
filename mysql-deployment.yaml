@@ -23,7 +23,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 15Gi
+      storage: 20Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -31,10 +31,7 @@ metadata:
   name: wordpress-mysql
   labels:
     app: wordpress
-    tier: mysql
-    owner: LINOPS
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: wordpress
@@ -54,7 +51,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: root-pass
+              name: mysql-pass
               key: password
         ports:
         - containerPort: 3306
