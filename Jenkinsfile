@@ -7,14 +7,13 @@ pipeline {
             steps {
                 sh 'echo BUILDING...'
                 sh 'echo BUILD ID - ${BUILD_ID}'
-                sh 'echo BUILD 200OK'
+                sh 'echo BUILD STAGE OK'
             }
         }
         stage('Test'){
             steps {
                 sh 'echo TESTING...'
                 sh 'python3 test.py'
-                sh 'echo TEST 200OK'
             }
         }
         stage('Deploy'){
@@ -22,7 +21,7 @@ pipeline {
                 sh 'echo DEPLOYING...'
                 sh 'envsubst < ${WORKSPACE}/wordpress-deployment.yaml'
                 sh 'kubectl apply -k ./'
-                sh 'echo DEPLOY 200OK'
+                sh 'echo DEPLOY STAGE OK'
             }
         }
     }

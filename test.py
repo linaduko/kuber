@@ -33,4 +33,6 @@ if "spec" in file:
     sleep(2)
     print("...ok")
 else:
-    raise ValueError() 
+    raise ValueError()
+
+print("TEST STAGE OK") 
