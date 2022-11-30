@@ -2,22 +2,18 @@ pipeline {
     agent {
         node 'kuber-ssh'
     }
-    tools {
-        maven 'Maven'
-    }
     stages {
         stage('Build'){
             steps {
                 sh 'echo BUILDING...'
                 sh 'echo BUILD ID - ${BUILD_ID}'
                 sh 'echo BUILD 200OK'
-                sh 'mvn install'
             }
         }
         stage('Test'){
             steps {
                 sh 'echo TESTING...'
-                junit 'target/surefire-reports/TEST-*.xml'
+                sh 'python3 test.py'
                 sh 'echo TEST 200OK'
             }
         }
