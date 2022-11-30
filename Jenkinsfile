@@ -14,9 +14,6 @@ pipeline {
             steps {
                 sh 'echo TESTING...'
                 sh 'python3 test.py'
-                when {
-                    branch 'main'
-                }
                 sh 'echo TEST 200OK'
             }
         }
