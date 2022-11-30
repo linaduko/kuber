@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-mysql
+  name: database
   labels:
     app: wordpress
 spec:
@@ -9,8 +9,7 @@ spec:
     - port: 3306
   selector:
     app: wordpress
-    tier: mysql
-  clusterIP: None
+    tier: backend
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -28,7 +27,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-mysql
+  name: database
   labels:
     app: wordpress
 spec:
@@ -36,27 +35,27 @@ spec:
   selector:
     matchLabels:
       app: wordpress
-      tier: mysql
+      tier: backend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: wordpress
-        tier: mysql
+        tier: backend
     spec:
       containers:
       - image: mysql:5.6
-        name: mysql
+        name: database
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-pass
+              name: root-pass
               key: password
         ports:
         - containerPort: 3306
-          name: mysql
+          name: database
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql

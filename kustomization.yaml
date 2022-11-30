@@ -1,5 +1,5 @@
 secretGenerator:
-- name: mysql-pass
+- name: root-pass
   literals:
   - password=Aa123456
 resources:
