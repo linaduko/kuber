@@ -6,13 +6,11 @@ metadata:
     app: wordpress
 spec:
   ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 30000
+    - port: 80
   selector:
     app: wordpress
     tier: frontend
-  type: NodePort
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -25,7 +23,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 20Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -34,7 +32,6 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: wordpress

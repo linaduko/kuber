@@ -23,7 +23,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 20Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -32,7 +32,6 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: wordpress
