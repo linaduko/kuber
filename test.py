@@ -5,7 +5,7 @@ print("CHECK REQUIRED FIELDS IN WORDPRESS-DEPLOYMENT.YAML...\n \n ")
 
 f = open('wordpress-deployment.yaml', mode='r')
 file = f.read()
-if "apiVersion:v1" in file:
+if "apiVersion: v1" in file:
     sleep(2)
     print("check apiVersion...")
     sleep(2)
