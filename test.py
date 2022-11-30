@@ -1,9 +1,10 @@
-print("HI \nWelcome to my simple test!")
+print("CHECK REQUIRED FIELDS IN WORDPRESS-DEPLOYMENT.YAML...\n \n ")
 
 f = open('wordpress-deployment.yaml', mode='r')
-line = f.readlines()
-m = line[0]
-if "v2" in m:
-       print("OK")
+file = f.read()
+if "apiVersion:" in file:
+    print("check apiVersion...")
+ 
 else:
+    print("ERROR IN WORDPRESS-DEPLOYMENT FILE")
     raise SystemError()
