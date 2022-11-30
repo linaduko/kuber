@@ -7,7 +7,9 @@ metadata:
 spec:
   ports:
     - port: 80
-    - nodePort: 30000
+      targetPort: 80
+      nodePort: 30000
+      protocol: TCP
   selector:
     app: wordpress
     tier: frontend
