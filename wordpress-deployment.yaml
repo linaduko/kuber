@@ -52,11 +52,11 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: database
+          value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: root-pass
+              name: mysql-pass
               key: password
         ports:
         - containerPort: 80
