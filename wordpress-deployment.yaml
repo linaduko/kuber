@@ -5,15 +5,17 @@ metadata:
   labels:
     app: wordpress
 spec:
+  type: NodePort
   ports:
-    - port: 80
+    - name: wordpress
+      port: 80
       targetPort: 80
       nodePort: 30000
       protocol: TCP
   selector:
     app: wordpress
     tier: frontend
-  type: NodePort
+  
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -26,7 +28,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 5Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -34,6 +36,8 @@ metadata:
   name: wordpress
   labels:
     app: wordpress
+    tier: frontend
+    owner: LINOPS
 spec:
   replicas: 1
   selector:
@@ -57,7 +61,7 @@ spec:
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-pass
+              name: root-pass
               key: password
         ports:
         - containerPort: 80
